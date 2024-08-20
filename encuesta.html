@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta - Counter Strike</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .survey-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        button {
+            background-color: #8b4513;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #a0522d;
+        }
+        #response, #totals {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="survey-container">
+    <h2>¿Salen tiritos esta noche en C.S 1.6?</h2>
+    <button onclick="submitAnswer('Mas vale')">Mas vale</button>
+    <button onclick="submitAnswer('Tengo gastroenteritis')">Tengo gastroenteritis</button>
+    <div id="response"></div>
+    <div id="totals"></div>
+</div>
+
+<script>
+    let masValeCount = 0;
+    let gastroCount = 0;
+
+    function submitAnswer(answer) {
+        if (answer === 'Mas vale') {
+            masValeCount++;
+        } else if (answer === 'Tengo gastroenteritis') {
+            gastroCount++;
+        }
+        document.getElementById('response').innerText = 'Has respondido: ' + answer;
+        updateTotals();
+    }
+
+    function updateTotals() {
+        document.getElementById('totals').innerText = `Total de respuestas - Mas vale: ${masValeCount}, Tengo gastroenteritis: ${gastroCount}`;
+    }
+</script>
+
+</body>
+</html>
